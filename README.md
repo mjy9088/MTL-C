@@ -1,7 +1,7 @@
-# MTL
+# MTL-C
 >  **M**y **T**emplate **L**ibrary.
 
-I want to stick to the meaning of the name later
+MTL for C. I want to stick to the meaning of the name later
 
 
 
@@ -31,7 +31,7 @@ How to use. How???
 
 ## Features
 
-like STL, JCF;
+[Data structures](https://en.wikipedia.org/wiki/List_of_data_structures), [related algorithms](https://en.wikipedia.org/wiki/List_of_terms_relating_to_algorithms_and_data_structures)' implementations
 
 
 
