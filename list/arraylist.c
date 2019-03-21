@@ -18,25 +18,25 @@ MTL_ArrayList new_MTL_ArrayList(int length)
 	return ret;
 }
 
-int tmp_length(MTL_ArrayList self)
+int MTL_ArrayList_length(MTL_ArrayList self)
 {
 	return self->length;
 }
 
-void tmp_set(MTL_ArrayList self, int idx, void *value)
+void MTL_ArrayList_set(MTL_ArrayList self, int idx, void *value)
 {
 	self->data[idx] = value;
 }
 
-void *tmp_get(MTL_ArrayList self, int idx)
+void *MTL_ArrayList_get(MTL_ArrayList self, int idx)
 {
 	return self->data[idx];
 }
 
 __attribute__((constructor)) static void init()
 {
-	MTLDEF_ArrayList.length = &tmp_length;
-	MTLDEF_ArrayList.set = &tmp_set;
-	MTLDEF_ArrayList.get = &tmp_get;
+	MTLDEF_ArrayList.length = &MTL_ArrayList_length;
+	MTLDEF_ArrayList.set = &MTL_ArrayList_set;
+	MTLDEF_ArrayList.get = &MTL_ArrayList_get;
 }
 
