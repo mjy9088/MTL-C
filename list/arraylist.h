@@ -1,6 +1,8 @@
 #ifndef __mtl_list_arraylist
 #define __mtl_list_arraylist
 
+#include "../list.h"
+
 typedef struct _tagMTL_ArrayList
 {
 	void *type;
