@@ -1,5 +1,5 @@
-#ifndef __mtl_list_arraylist
-#define __mtl_list_arraylist
+#ifndef __mtl_list_linkedlist
+#define __mtl_list_linkedlist
 
 #include "../list.h"
 
