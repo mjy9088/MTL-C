@@ -24,6 +24,21 @@ int MTL_LinkedList_length(MTL_LinkedList self)
 	return self->length;
 }
 
+void MTL_LinkedList_set(MTL_LinkedList self, int idx, void *value)
+{
+	if(idx > self->length)
+	{
+		// Exception? how?
+		return;
+	}
+	self->data[idx] = value;
+}
+
+void *MTL_LinkedList_get(MTL_ArrayList self, int idx)
+{
+	return self->data[idx];
+}
+
 __attribute__((constructor)) static void init()
 {
 	MTLDEF_LinkedList.length = &MTL_LinkedList_length;
