@@ -19,6 +19,11 @@ MTL_ArrayList new_MTL_LinkedList()
 	return ret;
 }
 
+int MTL_LinkedList_length(MTL_LinkedList self)
+{
+	return self->length;
+}
+
 __attribute__((constructor)) static void init()
 {
 	MTLDEF_ArrayList.length = &MTL_ArrayList_length;
