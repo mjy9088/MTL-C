@@ -1,6 +1,8 @@
 #ifndef __mtl_list
 #define __mtl_list
 
+#include "common.h"
+
 typedef struct _tagMTL_List
 {
 	void *type;
