@@ -4,7 +4,7 @@ typedef struct
 {
 	int (*length)(MTL_List self);
 	bool (*set)(MTL_List self, int idx, void *value);
-	bool (*get)(MTL_List self, int idx);
+	bool (*get)(MTL_List self, int idx, void **value);
 } *MTLDEF_List;
 
 int MTL_List_length(MTL_List self)
