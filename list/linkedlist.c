@@ -26,8 +26,8 @@ int MTL_LinkedList_length(MTL_LinkedList self)
 
 __attribute__((constructor)) static void init()
 {
-	MTLDEF_ArrayList.length = &MTL_ArrayList_length;
-	MTLDEF_ArrayList.set = &MTL_ArrayList_set;
-	MTLDEF_ArrayList.get = &MTL_ArrayList_get;
+	MTLDEF_LinkedList.length = &MTL_LinkedList_length;
+	MTLDEF_LinkedList.set = &MTL_LinkedList_set;
+	MTLDEF_LinkedList.get = &MTL_LinkedList_get;
 }
 
