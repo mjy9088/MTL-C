@@ -15,6 +15,7 @@ MTL_ArrayList new_MTL_LinkedList()
 	if(!ret) return NULL;
 	ret->type = &MTLDEF_LinkedList;
 	ret->length = 0;
+	ret->head = NULL;
 	return ret;
 }
 
