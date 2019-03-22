@@ -5,8 +5,8 @@
 struct
 {
 	int (*length)(MTL_ArrayList self);
-	void (*set)(MTL_ArrayList self, int idx, void *value);
-	void *(*get)(MTL_ArrayList self, int idx);
+	bool (*set)(MTL_ArrayList self, int idx, void *value);
+	bool (*get)(MTL_ArrayList self, int idx, void **value);
 } MTLDEF_ArrayList;
 
 MTL_ArrayList new_MTL_ArrayList(int length)
@@ -23,14 +23,24 @@ int MTL_ArrayList_length(MTL_ArrayList self)
 	return self->length;
 }
 
-void MTL_ArrayList_set(MTL_ArrayList self, int idx, void *value)
+bool MTL_ArrayList_set(MTL_ArrayList self, int idx, void *value)
 {
-	self->data[idx] = value;
+	if(self->length > idx)
+	{
+		self->data[idx] = value;
+		return true;
+	}
+	return false;
 }
 
-void *MTL_ArrayList_get(MTL_ArrayList self, int idx)
+bool MTL_ArrayList_get(MTL_ArrayList self, int idx, void **value)
 {
-	return self->data[idx];
+	if(self->length > idx)
+	{
+		*value = self->data[idx];
+		return true;
+	}
+	return false;
 }
 
 __attribute__((constructor)) static void init()
