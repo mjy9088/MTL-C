@@ -3,13 +3,13 @@
 
 #include "../list.h"
 
-typedef struct _tagMTL_ArrayList
+typedef struct _tagMTL_LinkedList
 {
 	void *type;
 	int length;
 	void *head;
 } *MTL_LinkedList;
 
-MTL_LinkedList new_MTL_LinkedList(int length);
+MTL_LinkedList new_MTL_LinkedList();
 
 #endif

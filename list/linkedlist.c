@@ -15,7 +15,7 @@ typedef struct _tagMTL_LinkedList_node
 	void *value;
 } MTL_LinkedList_node, *MTL_LinkedList_Node;
 
-MTL_ArrayList new_MTL_LinkedList()
+MTL_LinkedList new_MTL_LinkedList()
 {
 	MTL_LinkedList ret = malloc(sizeof(struct _tagMTL_LinkedList));
 	if(!ret) return NULL;
@@ -44,7 +44,7 @@ bool MTL_LinkedList_set(MTL_LinkedList self, int idx, void *value)
 		{
 			tmp = tmp->next;
 		}
-		tmp.value = value;
+		tmp->value = value;
 	}
 	else
 	{
@@ -54,14 +54,30 @@ bool MTL_LinkedList_set(MTL_LinkedList self, int idx, void *value)
 		{
 			tmp = tmp->next;
 		}
-		if((tmp = tmp.next = malloc(sizeof(MTL_LinkedList_node))) == NULL)
+		if((tmp = tmp->next = malloc(sizeof(MTL_LinkedList_node))) == NULL)
 		{
 			return false;
 		}
-		tmp.next = NULL;
-		tmp.value = value;
+		tmp->next = NULL;
+		tmp->value = value;
 	}
 	return true;
+}
+
+bool MTL_LinkedList_get(MTL_LinkedList self, int idx, void **value)
+{
+	if(idx < self->length)
+	{
+		int i;
+		MTL_LinkedList_Node tmp = self->head;
+		for(i = 1; i < idx; i++)
+		{
+			tmp = tmp->next;
+		}
+		*value = tmp->value;
+		return true;
+	}
+	return false;
 }
 
 __attribute__((constructor)) static void init()
