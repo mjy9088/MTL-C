@@ -4,6 +4,7 @@
 
 struct
 {
+	void (*release)(MTL_ArrayList self);
 	int (*length)(MTL_ArrayList self);
 	bool (*set)(MTL_ArrayList self, int idx, void *value);
 	bool (*get)(MTL_ArrayList self, int idx, void **value);
@@ -16,6 +17,12 @@ MTL_ArrayList new_MTL_ArrayList(int length)
 	ret->type = &MTLDEF_ArrayList;
 	ret->length = length;
 	return ret;
+}
+
+void MTL_ArrayList_release(MTL_ArrayList self)
+{
+	free(self->data);
+	free(self);
 }
 
 int MTL_ArrayList_length(MTL_ArrayList self)
@@ -45,6 +52,7 @@ bool MTL_ArrayList_get(MTL_ArrayList self, int idx, void **value)
 
 __attribute__((constructor)) static void init()
 {
+	MTLDEF_ArrayList.release = &MTL_ArrayList_release;
 	MTLDEF_ArrayList.length = &MTL_ArrayList_length;
 	MTLDEF_ArrayList.set = &MTL_ArrayList_set;
 	MTLDEF_ArrayList.get = &MTL_ArrayList_get;

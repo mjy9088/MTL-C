@@ -11,5 +11,6 @@ typedef struct _tagMTL_List
 int MTL_List_length(MTL_List self);
 bool MTL_List_set(MTL_List self, int idx, void *value);
 bool MTL_List_get(MTL_List self, int idx, void **value);
+void MTL_List_release(MTL_List self);
 
 #endif

@@ -4,6 +4,7 @@
 
 struct
 {
+	void (*release)(MTL_LinkedList self);
 	int (*length)(MTL_LinkedList self);
 	bool (*set)(MTL_LinkedList self, int idx, void *value);
 	bool (*get)(MTL_LinkedList self, int idx, void **value);
@@ -23,6 +24,18 @@ MTL_LinkedList new_MTL_LinkedList()
 	ret->length = 0;
 	ret->head = NULL;
 	return ret;
+}
+
+void MTL_LinkedList_release(MTL_LinkedList self)
+{
+	MTL_LinkedList_node *tmp = self->head, *temp;
+	while(tmp->next)
+	{
+		temp = tmp;
+		free(tmp);
+		tmp = temp->next;
+	}
+	free(tmp);
 }
 
 int MTL_LinkedList_length(MTL_LinkedList self)
@@ -82,6 +95,7 @@ bool MTL_LinkedList_get(MTL_LinkedList self, int idx, void **value)
 
 __attribute__((constructor)) static void init()
 {
+	MTLDEF_LinkedList.release = &MTL_LinkedList_release;
 	MTLDEF_LinkedList.length = &MTL_LinkedList_length;
 	MTLDEF_LinkedList.set = &MTL_LinkedList_set;
 	MTLDEF_LinkedList.get = &MTL_LinkedList_get;
