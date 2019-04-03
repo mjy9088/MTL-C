@@ -31,7 +31,7 @@ How to use. How???
 
 ## Features
 
-[Data structures](https://en.wikipedia.org/wiki/List_of_data_structures), [related algorithms](https://en.wikipedia.org/wiki/List_of_terms_relating_to_algorithms_and_data_structures)' implementations
+[Data structures](https://en.wikipedia.org/wiki/List_of_data_structures), [related](https://en.wikipedia.org/wiki/List_of_terms_relating_to_algorithms_and_data_structures) [algorithms](https://en.wikipedia.org/wiki/List_of_algorithms)' implementations
 
 
 
