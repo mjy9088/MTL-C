@@ -3,10 +3,20 @@
 
 #include "common.h"
 
+typedef struct _tagMTLDEF_List *MTLDEF_List;
+
 typedef struct _tagMTL_List
 {
-	void *type;
+	MTLDEF_List type;
 } *MTL_List;
+
+struct _tagMTLDEF_List
+{
+	void (*release)(MTL_List self);
+	int (*length)(MTL_List self);
+	bool (*set)(MTL_List self, int idx, void *value);
+	bool (*get)(MTL_List self, int idx, void **value);
+};
 
 int MTL_List_length(MTL_List self);
 bool MTL_List_set(MTL_List self, int idx, void *value);
