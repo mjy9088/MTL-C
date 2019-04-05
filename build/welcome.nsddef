@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file was created by NSISDialogDesigner 1.4.3.0
+http://coolsoft.altervista.org/nsisdialogdesigner
+Do not edit manually!
+-->
+<Dialog Name="welcome" Title="Welcome" Subtitle="to MTL installer">
+  <Panel Name="Panel1" Location="12, 68" Size="426, 119" />
+  <Button Name="Next" Location="282, 193" Text="Next" TabIndex="1" />
+  <Button Name="Cancel" Location="363, 193" Text="Cancel" TabIndex="2" />
+  <Bitmap Name="Bitmap1" Location="12, 12" Size="426, 50" ImageFilename="C:\Users\user\Desktop\MTL-C\build\test.bmp" TabIndex="3" />
+</Dialog>
