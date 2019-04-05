@@ -7,6 +7,7 @@ typedef struct _tagMTL_ArrayQueue
 {
 	void *type;
 	int length;
+	int start;
 	int capacity;
 	void *data[];
 } *MTL_ArrayQueue;
