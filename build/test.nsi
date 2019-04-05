@@ -9,20 +9,16 @@ Caption "test"
 LicenseData "../LICENSE.txt"
 InstallDir "$PROGRAMFILES\MTL\test"
 
-ShowInstDetails show
-AutoCloseWindow false
-SilentInstall normal
-CRCCheck on
-SetCompressor /SOLID /FINAL lzma
-SetDatablockOptimize on
-SetOverwrite try
-XPStyle on
-
 !include "welcome.nsdinc"
+!include "license.nsdinc"
 
 RequestExecutionLevel admin
 
 Page custom Fnc_welcome_Show
+Page custom Fnc_license_Show
+!insertmacro MUI_PAGE_COMPONENTS
+!insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_INSTFILES
 
 Section ""
 SectionEnd
