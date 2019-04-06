@@ -21,11 +21,12 @@ How to use. How???
 
 ### Clone
 
-- Clone this repository to your local machine using `...`
+- Clone this repository to your local machine using `git clone https://github.com/mjy9088/MTL-C.git`
 
 ### Setup
 
-- I don't know how
+- make some directory and go `mkdir cmake-build && cd cmake-build`
+- make Makefile with cmake `cmake `(repository)`/build/`
 
 
 
