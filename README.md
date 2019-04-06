@@ -27,6 +27,8 @@ How to use. How???
 
 - make some directory and go `mkdir cmake-build && cd cmake-build`
 - make Makefile with cmake `cmake `(repository)`/build/`
+- `make`
+- `make test`
 
 
 
