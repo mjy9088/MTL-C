@@ -6,6 +6,7 @@
 typedef struct _tagMTL_ArrayList
 {
 	void *type;
+	int capacity;
 	int length;
 	void *data[];
 } *MTL_ArrayList;
@@ -16,5 +17,7 @@ void MTL_ArrayList_release(MTL_ArrayList self);
 int MTL_ArrayList_length(MTL_ArrayList self);
 bool MTL_ArrayList_set(MTL_ArrayList self, int idx, void *value);
 bool MTL_ArrayList_get(MTL_ArrayList self, int idx, void **value);
+bool MTL_ArrayList_append(MTL_ArrayList self, int *idx, void *value);
+bool MTL_ArrayList_iterate(MTL_ArrayList self, bool (*func)(void *value));
 
 #endif
