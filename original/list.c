@@ -20,7 +20,7 @@ bool MTL_List_append(MTL_List self, int *idx, void *value)
 	return (*(self->type)->append)(self, idx, value);
 }
 
-void MTL_List_iterate(MTL_List self, void (*func)(void *value))
+bool MTL_List_iterate(MTL_List self, bool (*func)(void *value))
 {
 	(*(self->type)->iterate)(self, func);
 }
