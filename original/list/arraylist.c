@@ -24,7 +24,6 @@ MTL_ArrayList new_MTL_ArrayList(int length)
 
 void MTL_ArrayList_release(MTL_ArrayList self)
 {
-	free(self->data);
 	free(self);
 }
 
