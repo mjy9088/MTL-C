@@ -8,6 +8,8 @@ struct
 	int (*length)(MTL_LinkedList self);
 	bool (*set)(MTL_LinkedList self, int idx, void *value);
 	bool (*get)(MTL_LinkedList self, int idx, void **value);
+	bool (*append)(MTL_LinkedList self, int *idx, void *value);
+	bool (*iterate)(MTL_LinkedList self, bool (*func)(void *value));
 } MTLDEF_LinkedList;
 
 typedef struct _tagMTL_LinkedList_node
@@ -22,7 +24,7 @@ MTL_LinkedList new_MTL_LinkedList()
 	if(!ret) return NULL;
 	ret->type = &MTLDEF_LinkedList;
 	ret->length = 0;
-	ret->head = NULL;
+	ret->tail = ret->head = NULL;
 	return ret;
 }
 
@@ -49,31 +51,17 @@ bool MTL_LinkedList_set(MTL_LinkedList self, int idx, void *value)
 	{
 		return false;
 	}
-	else if(idx < self->length)
+	else if(idx == self->length)
 	{
-		int i;
-		MTL_LinkedList_Node tmp = self->head;
-		for(i = 0; i < idx; i++)
-		{
-			tmp = tmp->next;
-		}
-		tmp->value = value;
+		return MTL_LinkedList_append(self, NULL, value);
 	}
-	else
+	int i;
+	MTL_LinkedList_Node tmp = self->head;
+	for(i = 0; i < idx; i++)
 	{
-		int i;
-		MTL_LinkedList_Node tmp = self->head;
-		for(i = 1; i < idx; i++)
-		{
-			tmp = tmp->next;
-		}
-		if((tmp = tmp->next = malloc(sizeof(MTL_LinkedList_node))) == NULL)
-		{
-			return false;
-		}
-		tmp->next = NULL;
-		tmp->value = value;
+		tmp = tmp->next;
 	}
+	tmp->value = value;
 	return true;
 }
 
@@ -89,6 +77,35 @@ bool MTL_LinkedList_get(MTL_LinkedList self, int idx, void **value)
 		}
 		*value = tmp->value;
 		return true;
+	}
+	return false;
+}
+
+bool MTL_LinkedList_append(MTL_LinkedList self, int *idx, void *value)
+{
+	MTL_LinkedList_Node tmp = malloc(sizeof(MTL_LinkedList_node));
+	if(tmp == NULL)
+	{
+		return false;
+	}
+	tmp->next = NULL;
+	tmp->value = value;
+	if(self->head)
+	{
+		((MTL_LinkedList_Node)self->tail)->next = self->tail = tmp;
+	}
+	else
+	{
+		self->head = ((MTL_LinkedList_Node)self->tail)->next = self->tail = tmp;
+	}
+}
+
+bool MTL_LinkedList_iterate(MTL_LinkedList self, bool (*func)(void *value))
+{
+	MTL_LinkedList_Node tmp;
+	for(tmp = self->head; tmp; tmp = tmp->next)
+	{
+		if((*func)(tmp->value)) return true;
 	}
 	return false;
 }
