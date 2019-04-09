@@ -92,11 +92,11 @@ bool MTL_LinkedList_append(MTL_LinkedList self, int *idx, void *value)
 	tmp->value = value;
 	if(self->head)
 	{
-		((MTL_LinkedList_Node)self->tail)->next = self->tail = tmp;
+		self->tail = ((MTL_LinkedList_Node)self->tail)->next = tmp;
 	}
 	else
 	{
-		self->head = ((MTL_LinkedList_Node)self->tail)->next = self->tail = tmp;
+		self->head = self->tail = ((MTL_LinkedList_Node)self->tail)->next = tmp;
 	}
 	if(idx)
 	{
