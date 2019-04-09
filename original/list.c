@@ -15,6 +15,16 @@ bool MTL_List_get(MTL_List self, int idx, void **out)
 	return (*(self->type)->get)(self, idx, out);
 }
 
+bool MTL_List_append(MTL_List self, int *idx, void *value)
+{
+	return (*(self->type)->append)(self, idx, value);
+}
+
+void MTL_List_iterate(MTL_List self, void (*func)(void *value))
+{
+	(*(self->type)->iterate)(self, func);
+}
+
 void MTL_List_release(MTL_List self)
 {
 	(*(self->type)->release)(self);
