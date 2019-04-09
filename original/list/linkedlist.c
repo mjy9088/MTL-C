@@ -98,6 +98,8 @@ bool MTL_LinkedList_append(MTL_LinkedList self, int *idx, void *value)
 	{
 		self->head = ((MTL_LinkedList_Node)self->tail)->next = self->tail = tmp;
 	}
+	self->length++;
+	return true;
 }
 
 bool MTL_LinkedList_iterate(MTL_LinkedList self, bool (*func)(void *value))
