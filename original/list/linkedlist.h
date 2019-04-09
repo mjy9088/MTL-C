@@ -7,8 +7,7 @@ typedef struct _tagMTL_LinkedList
 {
 	void *type;
 	int length;
-	void *head;
-	void *tail;
+	void *head, *tail;
 } *MTL_LinkedList;
 
 MTL_LinkedList new_MTL_LinkedList();
