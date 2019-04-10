@@ -105,7 +105,9 @@ Function .onInit
   ClearErrors
   ExecWait '$R0 _?=$INSTDIR'
   IfErrors no_remove_uninstaller done
-  no_remove_uninstaller:
+
+ no_remove_uninstaller:
+  MessageBox MB_OK "Install overwrite" IDOK done
 
  done:
 
