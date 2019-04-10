@@ -122,5 +122,7 @@ __attribute__((constructor)) static void init()
 	MTLDEF_LinkedList.length = &MTL_LinkedList_length;
 	MTLDEF_LinkedList.set = &MTL_LinkedList_set;
 	MTLDEF_LinkedList.get = &MTL_LinkedList_get;
+	MTLDEF_LinkedList.append = &MTL_LinkedList_append;
+	MTLDEF_LinkedList.iterate = &MTL_LinkedList_iterate;
 }
 

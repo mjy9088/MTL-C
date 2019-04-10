@@ -94,5 +94,7 @@ __attribute__((constructor)) static void init()
 	MTLDEF_ArrayList.length = &MTL_ArrayList_length;
 	MTLDEF_ArrayList.set = &MTL_ArrayList_set;
 	MTLDEF_ArrayList.get = &MTL_ArrayList_get;
+	MTLDEF_ArrayList.append = &MTL_ArrayList_append;
+	MTLDEF_ArrayList.iterate = &MTL_ArrayList_iterate;
 }
 
