@@ -1,6 +1,6 @@
 #include "queue.h"
 
-int MTL_Queue_length(MTL_Queue self)
+size_t MTL_Queue_length(MTL_Queue self)
 {
 	return (*(self->type)->length)(self);
 }

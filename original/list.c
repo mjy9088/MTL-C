@@ -1,6 +1,6 @@
 #include "list.h"
 
-int MTL_List_length(MTL_List self)
+size_t MTL_List_length(MTL_List self)
 {
 	return (*(self->type)->length)(self);
 }

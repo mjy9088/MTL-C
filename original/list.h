@@ -13,14 +13,14 @@ typedef struct _tagMTL_List
 struct _tagMTLDEF_List
 {
 	void (*release)(MTL_List self);
-	int (*length)(MTL_List self);
+	size_t (*length)(MTL_List self);
 	bool (*set)(MTL_List self, int idx, void *value);
 	bool (*get)(MTL_List self, int idx, void **value);
 	bool (*append)(MTL_List self, int *idx, void *value);
 	bool (*iterate)(MTL_List self, bool (*func)(void *value));
 };
 
-int MTL_List_length(MTL_List self);
+size_t MTL_List_length(MTL_List self);
 bool MTL_List_set(MTL_List self, int idx, void *value);
 bool MTL_List_get(MTL_List self, int idx, void **value);
 bool MTL_List_append(MTL_List self, int *idx, void *value);

@@ -6,13 +6,13 @@ struct
 {
 	void (*release)(MTL_ArrayList self);
 	int (*length)(MTL_ArrayList self);
-	bool (*set)(MTL_ArrayList self, int idx, void *value);
-	bool (*get)(MTL_ArrayList self, int idx, void **value);
-	bool (*append)(MTL_ArrayList self, int *idx, void *value);
+	bool (*set)(MTL_ArrayList self, size_t idx, void *value);
+	bool (*get)(MTL_ArrayList self, size_t idx, void **value);
+	bool (*append)(MTL_ArrayList self, size_t *idx, void *value);
 	bool (*iterate)(MTL_ArrayList self, bool (*func)(void *value));
 } MTLDEF_ArrayList;
 
-MTL_ArrayList new_MTL_ArrayList(int length)
+MTL_ArrayList new_MTL_ArrayList(size_t length)
 {
 	MTL_ArrayList ret = malloc(sizeof(struct _tagMTL_ArrayList) + sizeof(void *) * length);
 	if(!ret) return NULL;
@@ -27,12 +27,12 @@ void MTL_ArrayList_release(MTL_ArrayList self)
 	free(self);
 }
 
-int MTL_ArrayList_length(MTL_ArrayList self)
+size_t MTL_ArrayList_length(MTL_ArrayList self)
 {
 	return self->length;
 }
 
-bool MTL_ArrayList_set(MTL_ArrayList self, int idx, void *value)
+bool MTL_ArrayList_set(MTL_ArrayList self, size_t idx, void *value)
 {
 	if(self->length < idx)
 	{
@@ -50,7 +50,7 @@ bool MTL_ArrayList_set(MTL_ArrayList self, int idx, void *value)
 	return true;
 }
 
-bool MTL_ArrayList_get(MTL_ArrayList self, int idx, void **value)
+bool MTL_ArrayList_get(MTL_ArrayList self, size_t idx, void **value)
 {
 	if(self->length > idx)
 	{
@@ -60,7 +60,7 @@ bool MTL_ArrayList_get(MTL_ArrayList self, int idx, void **value)
 	return false;
 }
 
-bool MTL_ArrayList_append(MTL_ArrayList self, int *idx, void *value)
+bool MTL_ArrayList_append(MTL_ArrayList self, size_t *idx, void *value)
 {
 	if(self->length == self->capacity)
 	{

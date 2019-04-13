@@ -6,9 +6,9 @@ struct
 {
 	void (*release)(MTL_LinkedList self);
 	int (*length)(MTL_LinkedList self);
-	bool (*set)(MTL_LinkedList self, int idx, void *value);
-	bool (*get)(MTL_LinkedList self, int idx, void **value);
-	bool (*append)(MTL_LinkedList self, int *idx, void *value);
+	bool (*set)(MTL_LinkedList self, size_t idx, void *value);
+	bool (*get)(MTL_LinkedList self, size_t idx, void **value);
+	bool (*append)(MTL_LinkedList self, size_t *idx, void *value);
 	bool (*iterate)(MTL_LinkedList self, bool (*func)(void *value));
 } MTLDEF_LinkedList;
 
@@ -40,12 +40,12 @@ void MTL_LinkedList_release(MTL_LinkedList self)
 	free(tmp);
 }
 
-int MTL_LinkedList_length(MTL_LinkedList self)
+size_t MTL_LinkedList_length(MTL_LinkedList self)
 {
 	return self->length;
 }
 
-bool MTL_LinkedList_set(MTL_LinkedList self, int idx, void *value)
+bool MTL_LinkedList_set(MTL_LinkedList self, size_t idx, void *value)
 {
 	if(idx > self->length)
 	{
@@ -55,7 +55,7 @@ bool MTL_LinkedList_set(MTL_LinkedList self, int idx, void *value)
 	{
 		return MTL_LinkedList_append(self, NULL, value);
 	}
-	int i;
+	size_t i;
 	MTL_LinkedList_Node tmp = self->head;
 	for(i = 0; i < idx; i++)
 	{
@@ -65,11 +65,11 @@ bool MTL_LinkedList_set(MTL_LinkedList self, int idx, void *value)
 	return true;
 }
 
-bool MTL_LinkedList_get(MTL_LinkedList self, int idx, void **value)
+bool MTL_LinkedList_get(MTL_LinkedList self, size_t idx, void **value)
 {
 	if(idx < self->length)
 	{
-		int i;
+		size_t i;
 		MTL_LinkedList_Node tmp = self->head;
 		for(i = 1; i < idx; i++)
 		{
@@ -81,7 +81,7 @@ bool MTL_LinkedList_get(MTL_LinkedList self, int idx, void **value)
 	return false;
 }
 
-bool MTL_LinkedList_append(MTL_LinkedList self, int *idx, void *value)
+bool MTL_LinkedList_append(MTL_LinkedList self, size_t *idx, void *value)
 {
 	MTL_LinkedList_Node tmp = malloc(sizeof(MTL_LinkedList_node));
 	if(tmp == NULL)

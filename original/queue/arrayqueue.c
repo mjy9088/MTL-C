@@ -5,7 +5,7 @@
 struct
 {
 	void (*release)(MTL_ArrayQueue self);
-	int (*length)(MTL_ArrayQueue self);
+	size_t (*length)(MTL_ArrayQueue self);
 	bool (*enqueue)(MTL_ArrayQueue self, void *value);
 	bool (*dequeue)(MTL_ArrayQueue self, void **value);
 	bool (*peek)(MTL_ArrayQueue self, void **value);
@@ -27,7 +27,7 @@ void MTL_ArrayQueue_release(MTL_ArrayQueue self)
 	free(self);
 }
 
-int MTL_ArrayQueue_length(MTL_ArrayQueue self)
+size_t MTL_ArrayQueue_length(MTL_ArrayQueue self)
 {
 	return self->length;
 }
@@ -64,7 +64,7 @@ bool MTL_ArrayQueue_peek(MTL_ArrayQueue self, void **value)
 	return false;
 }
 
-int MTL_ArrayQueue_capacity(MTL_ArrayQueue self)
+size_t MTL_ArrayQueue_capacity(MTL_ArrayQueue self)
 {
 	return self->capacity;
 }

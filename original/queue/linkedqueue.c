@@ -5,7 +5,7 @@
 struct
 {
 	void (*release)(MTL_LinkedQueue self);
-	int (*length)(MTL_LinkedQueue self);
+	size_t (*length)(MTL_LinkedQueue self);
 	bool (*enqueue)(MTL_LinkedQueue self, void *value);
 	bool (*dequeue)(MTL_LinkedQueue self, void **value);
 	bool (*peek)(MTL_LinkedQueue self, void **value);
@@ -39,14 +39,14 @@ void MTL_LinkedQueue_release(MTL_LinkedQueue self)
 	free(tmp);
 }
 
-int MTL_LinkedQueue_length(MTL_LinkedQueue self)
+size_t MTL_LinkedQueue_length(MTL_LinkedQueue self)
 {
 	return self->length;
 }
 
 bool MTL_LinkedQueue_enqueue(MTL_LinkedQueue self, void *value)
 {
-	int i;
+	size_t i;
 	MTL_LinkedQueue_Node tmp = self->head;
 	if((tmp = tmp->next = malloc(sizeof(MTL_LinkedQueue_node))) == NULL)
 	{
