@@ -5,7 +5,7 @@
 struct
 {
 	void (*release)(MTL_ArrayList self);
-	int (*length)(MTL_ArrayList self);
+	size_t (*length)(MTL_ArrayList self);
 	bool (*set)(MTL_ArrayList self, size_t idx, void *value);
 	bool (*get)(MTL_ArrayList self, size_t idx, void **value);
 	bool (*append)(MTL_ArrayList self, size_t *idx, void *value);
@@ -86,6 +86,11 @@ bool MTL_ArrayList_iterate(MTL_ArrayList self, bool (*func)(void *value))
 		}
 	}
 	return false;
+}
+
+size_t MTL_ArrayList_capacity(MTL_ArrayList self)
+{
+	return self->capacity;
 }
 
 __attribute__((constructor)) static void init()

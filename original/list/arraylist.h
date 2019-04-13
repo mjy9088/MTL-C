@@ -20,4 +20,6 @@ bool MTL_ArrayList_get(MTL_ArrayList self, size_t idx, void **value);
 bool MTL_ArrayList_append(MTL_ArrayList self, size_t *idx, void *value);
 bool MTL_ArrayList_iterate(MTL_ArrayList self, bool (*func)(void *value));
 
+size_t MTL_ArrayList_capacity(MTL_ArrayList self);
+
 #endif
