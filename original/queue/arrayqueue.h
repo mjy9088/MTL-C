@@ -9,7 +9,7 @@ typedef struct _tagMTL_ArrayQueue
 	size_t length, size;
 	size_t start;
 	size_t capacity;
-	void **data;
+	void *data;
 } *MTL_ArrayQueue;
 
 MTL_ArrayQueue new_MTL_ArrayQueue(int length, size_t elementSize);

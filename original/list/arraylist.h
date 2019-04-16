@@ -9,7 +9,7 @@ typedef struct _tagMTL_ArrayList
 	size_t capacity;
 	size_t length;
 	size_t size;
-	void **data;
+	void *data;
 } *MTL_ArrayList;
 
 MTL_ArrayList new_MTL_ArrayList(size_t length, size_t elementSize);
