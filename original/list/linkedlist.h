@@ -8,10 +8,11 @@ typedef struct _tagMTL_LinkedList
 	void *type;
 	size_t length;
 	void *head, *tail;
+	size_t size;
 } *MTL_LinkedList;
 
 MTL_LinkedList new_MTL_LinkedList();
-void MTL_LinkedList_release(MTL_LinkedList self);
+void MTL_LinkedList_release(MTL_LinkedList self, size_t elementSize);
 
 size_t MTL_LinkedList_length(MTL_LinkedList self);
 bool MTL_LinkedList_set(MTL_LinkedList self, size_t idx, void *value);

@@ -8,10 +8,11 @@ typedef struct _tagMTL_ArrayList
 	void *type;
 	size_t capacity;
 	size_t length;
-	void *data[];
+	size_t size;
+	void **data;
 } *MTL_ArrayList;
 
-MTL_ArrayList new_MTL_ArrayList(size_t length);
+MTL_ArrayList new_MTL_ArrayList(size_t length, size_t elementSize);
 void MTL_ArrayList_release(MTL_ArrayList self);
 
 size_t MTL_ArrayList_length(MTL_ArrayList self);
