@@ -15,7 +15,7 @@ void MTL_LinkedList_release(MTL_LinkedList self);
 
 size_t MTL_LinkedList_length(MTL_LinkedList self);
 bool MTL_LinkedList_set(MTL_LinkedList self, size_t idx, void *value);
-bool MTL_LinkedList_get(MTL_LinkedList self, size_t idx, void **value);
+bool MTL_LinkedList_get(MTL_LinkedList self, size_t idx, void *value);
 bool MTL_LinkedList_append(MTL_LinkedList self, size_t *idx, void *value);
 bool MTL_LinkedList_iterate(MTL_LinkedList self, bool (*func)(void *value));
 
