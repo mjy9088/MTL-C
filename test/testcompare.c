@@ -25,7 +25,21 @@ int main(int argc, char **argv)
 	while(!feof(f1) && !feof(f2))
 	{
 		read1 = fread(buf1, sizeof(char), 1024, f1);
+		if(ferror(f1))
+		{
+			fclose(f1);
+			fclose(f2);
+			printf("Error reading file: %s\n", argv[1]);
+			return -5;
+		}
 		read2 = fread(buf2, sizeof(char), 1024, f2);
+		if(ferror(f2))
+		{
+			fclose(f1);
+			fclose(f2);
+			printf("Error reading file: %s\n", argv[2]);
+			return -5;
+		}
 		if(read1 != read2)
 		{
 			fclose(f1);
@@ -47,6 +61,20 @@ int main(int argc, char **argv)
 		fclose(f1);
 		fclose(f2);
 		return 2;
+	}
+	if(ferror(f1))
+	{
+		fclose(f1);
+		fclose(f2);
+		printf("Error reading file: %s\n", argv[1]);
+		return -6;
+	}
+	if(ferror(f2))
+	{
+		fclose(f1);
+		fclose(f2);
+		printf("Error reading file: %s\n", argv[2]);
+		return -6;
 	}
     return 0;
 }
