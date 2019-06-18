@@ -10,14 +10,14 @@ int main(int argc, char **argv)
 	FILE *f1 = fopen(argv[1], "rb");
 	if(!f1)
 	{
-		printf("Failed to open file %s\n", argv[1]);
+		printf("Failed to open file: %s\n", argv[1]);
 		return -3;
 	}
 	FILE *f2 = fopen(argv[1], "rb");
 	if(!f2)
 	{
 		fclose(f1);
-		printf("Failed to open file %s\n", argv[2]);
+		printf("Failed to open file: %s\n", argv[2]);
 		return -4;
 	}
 	char buf1[1024], buf2[1024];
