@@ -5,20 +5,20 @@ int main(int argc, char **argv)
 	if(argc != 3)
 	{
 		printf("usage: %s file1 file2\n", argv[0]);
-		return -1;
+		return -2;
 	}
 	FILE *f1 = fopen(argv[1], "rb");
 	if(!f1)
 	{
 		printf("Failed to open file %s\n", argv[1]);
-		return -2;
+		return -3;
 	}
 	FILE *f2 = fopen(argv[1], "rb");
 	if(!f2)
 	{
 		fclose(f1);
 		printf("Failed to open file %s\n", argv[2]);
-		return -3;
+		return -4;
 	}
 	char buf1[1024], buf2[1024];
 	int read1, read2, i;
