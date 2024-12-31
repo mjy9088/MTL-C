@@ -1,8 +1,10 @@
+# ABANDONED
+
 # MTL-C
 
 >  **M**y **T**emplate **L**ibrary.
 
-MTL for C. I want to stick to the meaning of the name later
+MTL for C.
 
 ## Features
 
