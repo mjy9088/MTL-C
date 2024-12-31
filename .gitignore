@@ -1,1 +1,3 @@
-*.exe
+/.cache
+/builddir
+/compile_commands.json
